@@ -87,10 +87,24 @@ c) define a function with two 2 paramaetrs to handle on Add
 * remember when a state lineUp to a previuos state you must pass a function with a preview_param.
 * and return an array that content a spread []...operator]
 *Go to AddUser child_function_component to call props.onAdd providing 2 args like any function
-*assume to provide an id props in the new javascript object
-*attribute a key value to the users mapping list 
-
+*assume to provide an id_props in the new javascript list object
+*attribute a key value to the users objects mapping list 
 
 8-Add Error Modal component
+*create and define an ERROR modal component for UI
+*wrap the return content with Card component
+*inside of the card component describe the header, div-body and footer with <Button> for the error_template
+*use props to show title & body_message.
+*stylish using module.css.
+*choose location into AddUser to insert the ErrorModal component.
+*attribute all props needed in the ErrorModal child component(title & message dynamic)
+*add an overlay orphelin_backpage behind the error modal component
+==>test the view!
 
 9-Handle Error State as occured
+*Only show ErrorModal component when something input went wrong
+*manage Error state when is not error or setError
+*add props to state function and dynamicaly show message for invalid inputs
+*dismiss the Errormodal component when click the okay button or the overlay back layer.
+a)create and define an errohandler function.
+b)attribute props to close the overlay & errorModal custom dialogbox
