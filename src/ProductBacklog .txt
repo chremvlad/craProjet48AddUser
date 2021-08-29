@@ -1,0 +1,96 @@
+Items - Section8:
+1-Add user component
+2-Add re-usable Card component
+3-Add re-usable Button component
+3-Manage user input state with form
+4-Add validation & Resetting Logic conditions
+5-Add a List of users via State
+6-Add Error Modal component
+7-Handle Error State as occured
+============ ***** ==================
+Sprints 1
+Tasks:
+1-Add user component
+    1.1-create main component folder  
+        -create users subfolder
+          1.2-add a component function AddUser file js
+             *define constant AddUser arrow function & default export
+             *return a form with labels for input user_data id_name and id_age
+             *Add a placeholder button type submit to the end of the form
+-->test render the component AddUser within App.js
+//A-Handle submit form
+     *add on form the pointer function to be executed when the form is submitted
+     *define the handler function pointed to execute when the form is submitted
+        - insert event call to prevent default function ;
+
+Stylish: 
+1-index.css add to index.scss into .html_class a background color;
+2-wrap the form in a component Card container
+
+   2.1-create UI subfolder
+    2.2-define a re-usable Card component file js
+    2.3-access the content from parent with the children props call
+    2.4-use import styles or classes from styled-components or module.css to stylish 
+    the div_card_container in Card js file function;
+     add: npm install --save styled-components
+     2.5-apply 2 css classes    
+        a) one from {'${card.module.css}
+        b) one from the ${ props}'}
+        c) import into parrent the AddUser.module.css 
+           to attibute the props clasSName.
+
+3-Add re-usable Button component
+3.1- add a component function Button file js
+   a) return a button tag with module.css className & a props-type or 'button alternative'.
+   b) in additional use onClick function that expecting a props_onClick method
+   c) between the button placeholder props_children for some contents
+   d) go to AddUser.js to repplace the submit button tag with the imported custom button component.
+
+4-Manage user input state with form
+//B-Fetching input data change
+    a) collect input event value of the form
+    *import useState to update and save the state while keyStroke
+    *call useState to initialize it with empty string for each separated input.
+    *track returned-called input_states in an array constant
+    *create a function that will listen & trigger specified change_keyStroke input event
+    *bind this function with onChange function into the specified input event
+    *call specified input_state tracked with the array function to apply change from event target value.
+    *test using console.log() to visualize input_entered data to AddUser.
+    b)make sure when the button AddUser is fired that the input fields are reset or empty.
+     *setInputedData to empty string
+     *store previous data to props_value
+
+5-Add validation & Resetting Logic conditions
+  *make sure to addUser with valid_input applying conditional statement.
+  *CONDITION 1: both inputs are not empty.
+  *CONDITION 2: the input_age is not smaller than 1.
+ * Force a conversion of the age string to a number by adding a prefix sign+
+
+6-Add a List of users via State
+-->Build output data listen
+ a)define a new data list component function responsible to return users data out
+ *return a list expecting props to access data by mapping
+ *call map( function to transform list or array data function to jsx element)
+ *extract single user.name property and user.age
+ *stylish use Card.css to wrap the retun list
+ *List out the users data component below the AddUser component into the App.js
+ *make sure usersdata are not undefined for mapping
+ *therefore add an array to the child component imported in App.js with the same props_name
+  b)make sure to show data but empty array data.
+
+7-Managing a List of Users via state
+*define a new user object to store data while reset entered data when user_click to submit data
+*Concepts: Lifting the state Up.
+a)import and initialize useState in an destructured constant [array,setArray] into the App.js
+b)forward the userList to the component within users data props
+c) define a function with two 2 paramaetrs to handle on Add
+* remember when a state lineUp to a previuos state you must pass a function with a preview_param.
+* and return an array that content a spread []...operator]
+*Go to AddUser child_function_component to call props.onAdd providing 2 args like any function
+*assume to provide an id props in the new javascript object
+*attribute a key value to the users mapping list 
+
+
+8-Add Error Modal component
+
+9-Handle Error State as occured
