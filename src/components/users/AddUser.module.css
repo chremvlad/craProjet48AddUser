@@ -3,6 +3,7 @@
   padding: 1rem;
   width: 90%;
   max-width: 40rem;
+  min-width: 15rem;
 }
 
 .input label {
@@ -15,7 +16,7 @@
 .input input {
   font: inherit;
   display: block;
-  width: 100%;
+  width: 30%;
   border: 1px solid #ccc;
   padding: 0.15rem;
   margin-bottom: 0.5rem;

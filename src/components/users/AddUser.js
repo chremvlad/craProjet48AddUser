@@ -4,17 +4,19 @@ import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 import moclasse from "./AddUser.module.css";
 
-
-//Handle submit form & Handle input data change
+//Parent component to out put form input to users
 const AddUser = (props) => {
-  //track any specified input_states array called
+  //define hook function to track input data on form
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const [error, setError] = useState("");
 
-  const addUserHandler = (event) => {
+  //HANDLE FORM SUBMIT & DATA VALIDATION
+  const submitFormHandler = (event) => {
     event.preventDefault();
-    //apply conditional statement to step data forward:
+
+    //LOGIC STATEMENT FORM DATA VALIDATION
+    //Validate data setError before forwarding input data:
     if (enteredUsername.trim() === 0 || enteredAge.trim() === 0) {
       setError({
         title: "Invalid Input",
@@ -22,6 +24,7 @@ const AddUser = (props) => {
       });
       return; //break the AddUser_handler_function
     }
+    //ERROR: additional condition on age and to force string to +be a number
     if (+enteredAge <= 1) {
       setError({
         title: "Invalid Age",
@@ -33,21 +36,24 @@ const AddUser = (props) => {
     //test using console.log() to visualize input entered_data
     //console.log(enteredUsername, enteredAge);
 
-    //calling call props.onAdd to show on the list below the Add user component
+    //SEND UPDATED DATA to child through available props
     props.onAdd(enteredUsername, enteredAge);
 
-    //reset input data fields and store entered_data into props_value
+    //RESET INPUT data fields
     setEnteredUsername("");
     setEnteredAge("");
   };
-  //function that will listen & trigger for specified change_keyStroke input
-  const usernameChangeHandler = (event) => {
-    //call specified input_state tracked with the array function
-    //to apply change from event target value.
+
+  //HANDLE INPUT USER NAME
+  //listen & trigger for change_keyStroke on input USER NAME
+  const userNameChangeHandler = (event) => {
     setEnteredUsername(event.target.value);
   };
-  const ageChangeHandler = (event) => {
-    //repeat for onChange event
+
+  //HANDLE INPUT USER AGE
+  //listen trigger for change_keyStroke on input USER AGE
+  const userAgeChangeHandler = (event) => {
+    //update data input onChange event
     setEnteredAge(event.target.value);
   };
 
@@ -55,35 +61,39 @@ const AddUser = (props) => {
     setError(null);
   };
 
-  //first of all, create a form for user data
+  //Propagate Main form for user data_input & child ERROR MODAL data_props
   return (
     <div>
-       {error && (
-        <ErrorModal
-          title={error.title}
-          message={error.message}
-          onClose={errorHandler}
-        />
-      )}
+      
       <Card className={moclasse.input}>
-        <form onSubmit={addUserHandler}>
+        <form onSubmit={submitFormHandler}>
           <label htmlFor="username">Username</label>
           <input
             id="username"
             type="text"
-            onChange={usernameChangeHandler}
+            onChange={userNameChangeHandler}
             value={enteredUsername}
           />
           <label htmlFor="age">Age (Years)</label>
           <input
             id="age"
             type="number"
-            onChange={ageChangeHandler}
+            onChange={userAgeChangeHandler}
             value={enteredAge}
           />
           <Button type="submit"> Add User</Button>
         </form>
       </Card>
+
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onClose={errorHandler}
+        />
+      )}
+
+    
     </div>
   );
 };

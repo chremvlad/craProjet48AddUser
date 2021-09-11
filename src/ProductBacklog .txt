@@ -1,4 +1,9 @@
-Items - Section8:
+Section8:password->Chrem2312
+Account-> https://github.com/chremvlad/chremcra48
+Repository->git remote set-url origin 
+https://github.com/chremvlad/craProjet48AddUser.git
+
+Items:
 1-Add user component
 2-Add re-usable Card component
 3-Add re-usable Button component
@@ -67,7 +72,7 @@ Stylish:
  * Force a conversion of the age string to a number by adding a prefix sign+
 
 6-Add a List of users via State
--->Build output data listen
+-->Build output data listener
  a)define a new data list component function responsible to return users data out
  *return a list expecting props to access data by mapping
  *call map( function to transform list or array data function to jsx element)
@@ -108,3 +113,5 @@ c) define a function with two 2 paramaetrs to handle on Add
 *dismiss the Errormodal component when click the okay button or the overlay back layer.
 a)create and define an errohandler function.
 b)attribute props to close the overlay & errorModal custom dialogbox
+
+
